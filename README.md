@@ -29,22 +29,4 @@ Here are basic rules of electrical outlet placement per the NEC rules:
 * Outlets must go in-between pucks (the feet / supports of the SoCo raised floor system)
 ![Allowable Configuration](https://raw.githubusercontent.com/SocialConstruct/outlets/master/png/allowable_configuration.png)
 
-## Submittal
-Your solution should use the minimum number of outlets while satisfying all the rules above outlined above. Please submit a {your_name}.zip file and make sure the following are part of your submission:
-* **outlets.json** - a file containing the coordinates in WCS for outlet locations. You do not need to include the full geometry of the outlets, though you are welcome to.
-* **outlet_placer.py** - with your solution
-* **solution.md** - a brief explanation of what you did and why. There are some questions in there that are meant to act as guides rather than a "lab report"
-* any other supporting files
 
-We mainly want to see your code, and strongly prefer Python. If you have a strong preference for another language, you may submit your solution that way, but please include an explanation as to why.
-
-## Helpful Resources
-You can use whatever open source libraries you think might be helpful in solving the problem. Some of our favorites include:
-
-* [Shapely](https://pypi.org/project/Shapely/) is a helpful Python library for manipulation and analysis of planar geometric objects
-* [PuLP](https://pypi.org/project/PuLP/) and [Google OR Tools](https://developers.google.com/optimization) include powerful optimization tools
-* Autodesk provides easy [online viewers](https://viewer.autodesk.com/) for various CAD files
-* Receptacle [spacing requirements](https://www.ecmag.com/section/codes-standards/article-210-branch-circuits-6) per the 2017 NEC, if you're curious about the rules. The relevant sections are 210.52(A)(1) and 210.52(A)(2)
-
-## Other
-We provided an illustration of one sample solution, though there are many others that satisfy the constraints given. We don't expect you to arrive at this exact solution. Do not worry about symmetry or aesthetics of your final solution. We want to see how you think, and how you approach problems. We're looking for functional, readable code rather than perfection.
