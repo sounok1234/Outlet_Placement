@@ -1,12 +1,12 @@
 
 ## Files and Folders
 
-* [json/studio_info.json](https://github.com/SocialConstruct/outlets/blob/master/json/studio_info.json) contains the coordinates in WCS for all the rooms, windows, and doors of this sample studio apartment. The coordinates are based on a [simplified floor plan](https://github.com/SocialConstruct/outlets/blob/master/png/studio_simple.png?raw=true). 
-* [json/floor_info.json](https://github.com/SocialConstruct/outlets/blob/master/json/floor_info.json) contains the coordinates in WCS for all floors and pucks of the flooring system for this sample studio apartment.
+* [json/studio_info.json](https://github.com/sounok1234/Outlet_Placement/blob/master/json/studio_info.json) contains the coordinates in WCS for all the rooms, windows, and doors of this sample studio apartment. The coordinates are based on a [simplified floor plan](https://github.com/sounok1234/Outlet_Placement/blob/master/png/studio_simple.png). 
+* [json/floor_info.json](https://github.com/sounok1234/Outlet_Placement/blob/master/json/floor_info.json) contains the coordinates in WCS for all floors and pucks of the flooring system for this sample studio apartment.
 
 Both files store coordinates in WCS and as **decimal inches** in the format of `(x,y)`.
 
-The [/png](https://github.com/SocialConstruct/outlets/tree/master/png) folder contains reference images for this studio apartment, including a [possible final solution of outlet locations](https://github.com/sounok1234/Outlet_Placement/blob/master/outlet.PNG). 
+The [/png](https://github.com/sounok1234/Outlet_Placement/tree/master/png) folder contains reference images for this studio apartment, including a [possible final solution of outlet locations](https://github.com/sounok1234/Outlet_Placement/blob/master/outlet.PNG). 
 
 ## Rules of Outlet Placement
 Here are basic rules of electrical outlet placement per the NEC rules:
