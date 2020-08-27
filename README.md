@@ -28,6 +28,6 @@ Here are basic rules of electrical outlet placement per the NEC rules:
 ![Allowable Configuration](https://raw.githubusercontent.com/SocialConstruct/outlets/master/png/allowable_configuration.png)
 
 ## Libraries
-Used Rhino3dm, compute_rhino3d and shapely libraries for the geometric computations. The code is entirely independent of Rhino3D or any software, even though a grasshopper file has been added which can be used to visualize the results if desired.
+Used [Rhino3dm](https://github.com/mcneel/rhino3dm), [compute_rhino3d](https://www.rhino3d.com/compute) and [shapely](https://pypi.org/project/Shapely/) libraries for the geometric computations. The code is entirely independent of [Rhino3D](https://www.rhino3d.com/) or any software, even though a [grasshopper](https://www.grasshopper3d.com/) file has been added which can be used to visualize the results if desired.
 
 
