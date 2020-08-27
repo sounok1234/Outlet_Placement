@@ -22,11 +22,11 @@ Here are basic rules of electrical outlet placement per the NEC rules:
 ![Another Rules Summary](https://www.naffainc.com/x/CB2/Elect/EImages/outletsneeded.gif)
 
 ### Other Rules
-* For this example problem, kitchens do not count as wall space (they have their own set of rules, which we'll ignore for simplicity's sake)
-* You can ignore bathrooms and closets
+* For this example problem, kitchens do not count as wall space (they have their own set of rules, which are ignored for simplicity's sake)
+* Bathrooms and closets can be ignored
 * All windows in this floor plan have floor-to-ceiling glass. Therefore, outlets cannot be placed in front of them (even though they count as wall space)
-* SoCo outlets are 2" deep and 4" wide
-* Outlets must go in-between pucks (the feet / supports of the SoCo raised floor system)
+* Outlets are 2" deep and 4" wide
+* Outlets must go in-between pucks 
 ![Allowable Configuration](https://raw.githubusercontent.com/SocialConstruct/outlets/master/png/allowable_configuration.png)
 
 
