@@ -6,7 +6,7 @@
 
 Both files store coordinates in WCS and as **decimal inches** in the format of `(x,y)`.
 
-The [/png](https://github.com/SocialConstruct/outlets/tree/master/png) folder contains reference images for this studio apartment, including a [possible final solution of outlet locations](https://github.com/SocialConstruct/outlets/blob/master/png/studio_with_outlets.png?raw=true). You can see the sample final solution including floors, supports, and outlet locations [here](https://github.com/SocialConstruct/outlets/blob/master/png/studio_final.png?raw=true)
+The [/png](https://github.com/SocialConstruct/outlets/tree/master/png) folder contains reference images for this studio apartment, including a [possible final solution of outlet locations](https://github.com/sounok1234/Outlet_Placement/blob/master/outlet.PNG). 
 
 ## Rules of Outlet Placement
 Here are basic rules of electrical outlet placement per the NEC rules:
