@@ -27,4 +27,7 @@ Here are basic rules of electrical outlet placement per the NEC rules:
 * Outlets must go in-between pucks 
 ![Allowable Configuration](https://raw.githubusercontent.com/SocialConstruct/outlets/master/png/allowable_configuration.png)
 
+## Libraries
+Used Rhino3dm, compute_rhino3d and shapely libraries for the geometric computations. The code is entirely independent of Rhino3D or any software, even though a grasshopper file has been added which can be used to visualize the results if desired.
+
 
