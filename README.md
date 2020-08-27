@@ -30,4 +30,7 @@ Here are basic rules of electrical outlet placement per the NEC rules:
 ## Libraries
 Used [Rhino3dm](https://github.com/mcneel/rhino3dm), [compute_rhino3d](https://www.rhino3d.com/compute) and [shapely](https://pypi.org/project/Shapely/) libraries for the geometric computations. The code is entirely independent of [Rhino3D](https://www.rhino3d.com/) or any software, even though a [grasshopper](https://www.grasshopper3d.com/) file has been added which can be used to visualize the results if desired.
 
+## Results
+
+Executing [outlet_placer.py](https://github.com/sounok1234/Outlet_Placement/blob/master/outlet_placer.py) should generate the json files of the location of the [outlets](https://github.com/sounok1234/Outlet_Placement/blob/master/outlets.json). A visualization of the result is provided by [outlet.png](https://github.com/sounok1234/Outlet_Placement/blob/master/outlet.PNG).  
 
