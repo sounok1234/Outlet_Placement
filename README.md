@@ -1,16 +1,5 @@
-# Outlet Placer
-
-Thank you for taking the time to do our coding challenge. Below you'll find instructions and info you need to complete this exercise.
-
-One of the things we do at Social Construct is to [programmatically create building details](https://techcrunch.com/2020/07/14/social-constructs-computer-optimized-buildings-could-shake-construction-industrys-foundations/) based on floor plans. In the following problem, you'll place outlets in a sample studio apartment according to rules of the 2017 National Electric Code on outlet spacing.
-
-## Some Background
-All of Social Construct's cables, pipes, and assorted in-wall infrastructure live under the floor as part of our raised-floor system. Floorboards sit on top of support structures called "pucks", which come in 3 sizes: 4"x4", 4"x2", and 2"x2".
-
-![Raised-floor system](https://techcrunch.com/wp-content/uploads/2020/07/floor-wiring.jpg)
 
 ## Files and Folders
-The [/json](https://github.com/SocialConstruct/outlets/tree/master/json) folder contains all the data files you need to get this project started.
 
 * [json/studio_info.json](https://github.com/SocialConstruct/outlets/blob/master/json/studio_info.json) contains the coordinates in WCS for all the rooms, windows, and doors of this sample studio apartment. The coordinates are based on a [simplified floor plan](https://github.com/SocialConstruct/outlets/blob/master/png/studio_simple.png?raw=true). You can see the detailed floor plan [here](https://github.com/SocialConstruct/outlets/blob/master/png/studio_detailed.png?raw=true).
 * [json/floor_info.json](https://github.com/SocialConstruct/outlets/blob/master/json/floor_info.json) contains the coordinates in WCS for all floors and pucks of the SoCo flooring system for this sample studio apartment.
