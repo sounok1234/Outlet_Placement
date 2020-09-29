@@ -3,10 +3,13 @@ import rhino3dm as rh
 import compute_rhino3d.Curve 
 import compute_rhino3d.Intersection as CI
 import shapely.geometry as sh
+import shapely.ops as so
 import compute_rhino3d.Util
 import time
 
 compute_rhino3d.Util.authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwIjoiUEtDUyM3IiwiYyI6IkFFU18yNTZfQ0JDIiwiYjY0aXYiOiI1dkllQnIxMWdJU2RIRGh3ZHQ2NXV3PT0iLCJiNjRjdCI6ImNyVm5hK29HbzZTaTZUVGVpNFQ3UFFkMVQrckdLdEx0cW9kWExBVWRJdGdSR0dGazdzNDNaWFRDdTJ6eFFaWGMxQ3ltc2VGbmNuTG4yNHlydkZNZkhHSkp2cjNMVFU3cjVoOXV2SkVLZkd5ZXE5NUZubmQ3LzVSd0k0aXBrbSs4SW92TVFqLzBFSFNSN0kzUXFQL3hLVFdmS1Z3eGgyYU9HdUVyMjJoOTlqdERKTXhVRHk1WGt0OUFyWFdjUjJ4dmJyM1A0RU43aS95SjN2UTNSb01TUXc9PSIsImlhdCI6MTU5ODAyODg1MX0.GUwrd4-gk9lVtV4u6PLF_Yqxhg7ZExDQ6GeNRgdnkkc'
+
+def flatten(l): return flatten(l[0]) + (flatten(l[1:]) if len(l) > 1 else []) if type(l) is list else [l]
 
 def GetPolyline(pts):
     PtsList = rh.Point3dList()
@@ -128,6 +131,51 @@ def GetCurveCenter(curve):
     z_avg = sum(z[1:])/len(z[1:])
     return rh.Point3d(x_avg, y_avg, z_avg)
 
+def GetWalls_New(room, door, kitchen):
+    walls = []
+    poly = GetShapelyPolygon(room.GetLine()[0].ToPolyline())
+    coincident = []
+    doorPts = flatten(door.GetPoints())
+    kitpts = kitchen.GetPoints()[0]
+    #print(kitpts)
+    AllPts = (doorPts + kitpts)
+    for p in AllPts:
+        pt = sh.Point(p.X, p.Y)
+        if pt.distance(poly) < 1e-8: 
+        #if poly.within(pt) == True:
+            coincident.append(compute_rhino3d.Curve.ClosestPoint(room.GetLine()[0], p)[1])
+            #coincident.append(pt)
+        else:
+            pass
+    #split = so.split(poly, coincident[0]) 
+    
+    set(coincident)
+    coincident = list(set(coincident))
+    coincident.sort()
+    del coincident[2]
+    params = coincident
+    curves = []
+    params.append(params[0])
+    params = params[1:]
+    i = 0
+    while i < len(params):
+        if (params[i] < params[i+1]):
+            curves.append(rh.Curve.Trim(room.GetLine()[0], params[i], params[i+1])) 
+        else:
+            curve1 = rh.Curve.Trim(room.GetLine()[0], params[i], 6)
+            curve2 = rh.Curve.Trim(room.GetLine()[0], 0, params[i+1])
+            join = compute_rhino3d.Curve.JoinCurves([curve1, curve2]) 
+            for j in join:
+                curves.append(j)
+        i += 2
+    for c in curves:
+        if (compute_rhino3d.Curve.GetLength1(c, 0.01) < 24): 
+            pass
+        else:
+            walls.append(c)
+    return walls[1:]
+    
+    
 def GetWalls(room, door, kitchen):
     params = []
     walls = []
@@ -143,7 +191,9 @@ def GetWalls(room, door, kitchen):
         events = CI.CurveCurve(door, room, 0.0000000001, 0.0)
         for event in events:
             params.append(event['ParameterB'])
+    
     params.sort()
+    #print(params)
     curves = []
     params.append(params[0])
     params = params[1:]
@@ -229,7 +279,10 @@ def SolveInterference(outlets, pucks, wall):
         pts = []
         index = int(rh.PointCloud.ClosestPoint(cloud, GetCurveCenter(o))) 
         if compute_rhino3d.Curve.PlanarCurveCollision(o, pucks[index], rh.Plane.WorldXY(), 0.0001):  
+            #start2 = time.time()
             inter = CI.CurveCurve(o, pucks[index], 0.0001, 0.0) 
+            #end2 = time.time()
+            #print("Intersection" + str(end2 - start2))
             for i in inter:
                 #print(i)
                 pts.append(i['PointA'])
@@ -253,6 +306,7 @@ def SolveInterference(outlets, pucks, wall):
             else:
                 oc.Transform(rh.Transform.Translation(-dir2.X, -dir2.Y, 0))
             moved = oc
+            
             rects.append(moved) 
         else:
             rects.append(o)
@@ -282,14 +336,13 @@ def main():
     window = BuiObj(studio_data, 'windows')
     room = BuiObj(studio_data, 'generic_rooms')
     door = BuiObj(studio_data, 'doors')
-    
     room_offset = compute_rhino3d.Curve.Offset(room.GetLine()[0], rh.Plane.WorldXY(), -6, 0.01, 1)[0]
     room_offset_sh = GetShapelyPolygon(room_offset.ToPolyline())
     puck = GetPucks(floor_data, room_offset_sh)[0]
-    walls = GetWalls(room.GetLine()[0], door, kitchen)
-    placeOutlets = PlaceOutlet(floor_data, walls, window, room_offset_sh)
+    #walls = GetWalls(room.GetLine()[0], door, kitchen)
+    walls2 = GetWalls_New(room, door, kitchen)
+    placeOutlets = PlaceOutlet(floor_data, walls2, window, room_offset_sh)
     outlets = CreateOutlet(placeOutlets, 4, 4)
-
     final_geom = SolveInterference(outlets, puck, room.GetLine()[0])
     placeOutlets = place_outlets(final_geom)
     
@@ -298,7 +351,7 @@ def main():
         json.dump(placeOutlets, json_out)
     
     end = time.time()
-    print(end - start)
+    print("Total " + str(end - start))
 
 if __name__ == "__main__":
     main()
