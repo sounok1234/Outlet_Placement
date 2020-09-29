@@ -174,8 +174,8 @@ def GetWalls_New(room, door, kitchen):
         else:
             walls.append(c)
     return walls[1:]
-    
-    
+
+"""
 def GetWalls(room, door, kitchen):
     params = []
     walls = []
@@ -214,7 +214,7 @@ def GetWalls(room, door, kitchen):
         else:
             walls.append(c)
     return walls[1:]
-
+"""
 def CreateOutlet(pts, width, height):
     rects = []
     for p in pts:
